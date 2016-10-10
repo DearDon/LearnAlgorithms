@@ -1,0 +1,15 @@
+This dir is used to practise algo and python practice
+log01(2016/08/17):
+	Now I create a argparse learn python file to def argument parse module, then I can import the defined function to all the other algo python file. this argparse can make all the other python file more standard. I've already test that other python file can easily import this argparse file. Now I can edit file to pragram the file for algorithm. And revise the argparse file for specific purpsoe.
+
+log02(2016/08/21):
+	figure out how the argparse module work for a must or optional input. You can input "-" before the option name to specify it's optional. While it's a must if without "-". Now we can call argparse modul through man-made Argparse.py easily.  
+
+log03(2016/08/23):
+	Today I add the insertion sort method as the first algo python. it turn out to be successful ^v^! good start!
+
+log04(2016/08/24):
+	Today I add the choose sort method. later I think I should collect all the sort method in a module or a python file with different function name. As this style may decrease the repeat main code(Argparse). Besides, we can easily to test the run time for different sort method. Do it tomorrow. good night!
+
+log05(2016/09/06):
+    transfer all sort to class. so Argparse.py don't need anymore. delete them. start to implement heap sort class
