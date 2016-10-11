@@ -13,3 +13,11 @@ log04(2016/08/24):
 
 log05(2016/09/06):
     transfer all sort to class. so Argparse.py don't need anymore. delete them. start to implement heap sort class
+
+log06(2016/10/11):
+    Choose a rule to name file(module), method, class and variable. 
+        file name should be lower case words without seperate char.
+        method name should start with lower case word, then following words should be upper case for init char.
+        class name should start with upper case for init char of every words
+        variable should be all lower case, but can use '_' to seperate words.
+    Add unittest to all class file, coding should be test driven.

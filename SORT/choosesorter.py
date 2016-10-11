@@ -1,5 +1,5 @@
 #########################################################################
-# File Name: choosesort.py
+# File Name: choosesorter.py
 # Purpose:
 #    This program is to implement choose sort method
 # History:
@@ -7,7 +7,6 @@
 #    Author: Don    E-mail: dpdeng@whu.edu.cn
 #########################################################################
 
-import argparse as arg
 from sorter import Sorter
 import unittest
 
@@ -21,23 +20,27 @@ class ChooseSorter(Sorter):
             self.array[i],self.array[key]=self.array[key],self.array[i]
         return self.array
 
-def get_args():
-    parser = arg.ArgumentParser(description='sort a given array')
-    parser.add_argument("-a", type=int, nargs='+', help="the array to be sorted, eg. -a 1 4 2 3")
-    return parser.parse_args()
+class TestChooseSorter(unittest.TestCase):
+    def test_sortNorm(self):
+        self.assertEqual(ChooseSorter([1,6,5]).sort(), [1,5,6])
+
+    def test_sortOne(self):
+        self.assertEqual(ChooseSorter([1]).sort(), [1])
+
+    def test_sortFloat(self):
+        self.assertEqual(ChooseSorter([1.2, 2.0, 1.5]).sort(), [1.2, 1.5, 2.0])
+
+    def test_sortChar(self):
+        self.assertEqual(ChooseSorter(['c', 'b', 'a']).sort(), ['a', 'b', 'c'])
+
+    def test_longArray(self):
+        unsort_array=[i for i in range(999,0,-1)]
+        sorted_array=[i for i in range(1,1000)]
+        self.assertEqual(ChooseSorter(unsort_array).sort(), sorted_array)
+
+    def test_getSortTime(self):
+        self.assertIsInstance(ChooseSorter([1,6,5]).getSortTime(), float)
 
 if __name__ == "__main__":
-    args = get_args()
+    unittest.main()
 
-    if args.a:
-        if False:
-            array=args.a.split(',')
-            for i in range(len(array)):
-                array[i]=int(array[i])
-        array = args.a
-    else:
-        array=[1,3,2,4]
-
-    sorter=ChooseSorter(array)
-
-    print(sorter.sort())
