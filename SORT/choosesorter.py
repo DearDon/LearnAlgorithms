@@ -1,10 +1,10 @@
 #########################################################################
 # File Name: choosesorter.py
 # Purpose:
-#    This program is to implement choose sort method
+#       This program is to implement choose sort method
 # History:
-#    Created Time: Wed 24 Aug 2016 10:59:39 PM CST
-#    Author: Don    E-mail: dpdeng@whu.edu.cn
+#	Created Time: 2016-10-12
+# Author: Don E-mail: dpdeng@whu.edu.cn
 #########################################################################
 
 from sorter import Sorter
@@ -43,4 +43,3 @@ class TestChooseSorter(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

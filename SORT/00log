@@ -21,3 +21,6 @@ log06(2016/10/11):
         class name should start with upper case for init char of every words
         variable should be all lower case, but can use '_' to seperate words.
     Add unittest to all class file, coding should be test driven.
+
+log07(2016/10/12):
+    Revise the file structure, then try to implement heapsorter, just start.

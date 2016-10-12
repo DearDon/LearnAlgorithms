@@ -1,10 +1,10 @@
 #########################################################################
 # File Name: sorter.py
 # Purpose:
-#    This program is to implement Sort algo with class
+#       This program is to implement Sort algo with class
 # History:
-#    Created Time: Tue 06 Sep 2016 10:33:12 PM CST
-#    Author: Don    E-mail: dpdeng@whu.edu.cn
+#	Created Time: 2016-10-12
+# Author: Don E-mail: dpdeng@whu.edu.cn
 #########################################################################
 import timeit
 import unittest
@@ -23,22 +23,6 @@ class Sorter():
         stoptime = timeit.default_timer()
 
         return stoptime-starttime
-
-class HeapSorter(Sorter):
-    def sort(self):
-        pass #wait to implement
-
-    def heap_minimum(self):
-        return self.array[0]
-
-    def heap_extract_min(self):
-        pass
-
-    def heap_decrease_key(self):
-        pass
-
-    def min_heap_insert(self):
-        pass
 
 class TestSorter(unittest.TestCase):
     def test_init(self):
