@@ -9,7 +9,7 @@
 import timeit
 import unittest
 
-class Sorter():
+class Sorter(object):
     def __init__(self, array):
         self.array=array
 

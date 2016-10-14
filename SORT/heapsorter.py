@@ -11,27 +11,43 @@ from sorter import Sorter
 
 class HeapSorter(Sorter):
     def __init__(self, array):
-        super(HeapSorter, self).__init__()
+        super(HeapSorter, self).__init__(array)
         self.heap_size=0
+
     def sort(self):
         pass #wait to implement
 
-    def heapMinimum(self):
+    def minHeapBuild(self):#Done
+        self.heap_size=1
+        for i in range(1,len(self.array)):
+            self.minHeapInsert(self.array[i])
+
+    def heapMinimum(self):#Done
         return self.array[0]
 
     def heapExtractMin(self):
         pass
 
-    def heapDecreaseKey(self):
-        pass
+    def heapDecreaseKey(self, i, key):#Done
+        if self.heap_size <= i:
+            raise Exception(str(i)+" is beyond heap range")
+        elif self.array[i] < key:
+            raise Exception(str(key)+" is already larger than array[i] "+str(self.array[i]))
+        self.array[i]=key
+        while i != 0 and self.array[i]<self.array[self.parentIndex(i)]:
+            self.array[i], self.array[self.parentIndex(i)]=self.array[self.parentIndex(i)], self.array[i]
+            i=self.parentIndex(i)
 
-    def minHeapInsert(self):
-        pass
+    def minHeapInsert(self, key):#Done
+        if self.heap_size == len(self.array):
+            raise Exception("can't insert, array is full")
+        self.heap_size += 1
+        self.array[self.heap_size-1]=float("inf")
+        self.heapDecreaseKey(self.heap_size-1,key)
 
-    def parentIndex(self,i):
-        if self.heap_size < i or i == 0:
-            return Exception
-
+    def parentIndex(self,i):#Done
+        if self.heap_size <= i or i == 0:
+            raise Exception("element with index "+str(i)+" don't have parentIndex")
         return (i-1)/2
 
 class TestHeapSorter(unittest.TestCase):
@@ -66,11 +82,50 @@ class TestHeapSorter(unittest.TestCase):
 
     def test_parentIndex(self):
         hs=HeapSorter([1,6,2])
+        hs.heap_size=3
+
+        self.assertEqual(hs.heap_size, 3)
         self.assertEqual(hs.parentIndex(1), 0)
         self.assertEqual(hs.parentIndex(2), 0)
+
+        with self.assertRaises(Exception):
+            hs.parentIndex(3)
         with self.assertRaises(Exception):
             hs.parentIndex(0)
 
+    def test_decreateKey(self):
+        hs=HeapSorter([3,6,5])
+        hs.heap_size=3
+
+        hs.heapDecreaseKey(1,4)
+        self.assertEqual(hs.array, [3,4,5])
+
+        hs.heapDecreaseKey(2,2)
+        self.assertEqual(hs.array, [2,4,3])
+
+    def test_minHeapInsert(self):
+        hs=HeapSorter([3,6,5])
+        hs.heap_size=1
+
+        hs.minHeapInsert(1)
+        self.assertEqual(hs.heap_size, 2)
+        self.assertEqual(hs.array, [1,3,5])
+
+        hs.minHeapInsert(1)
+        self.assertEqual(hs.heap_size, 3)
+        self.assertEqual(hs.array, [1,3,1])
+
+        with self.assertRaises(Exception):
+            hs.minHeapInsert(6)
+
+    def test_minHeapBuild(self):
+        hs=HeapSorter([1,4,3,2])
+        hs.minHeapBuild()
+        self.assertEqual(hs.array, [1,2,3,4])
+
+        hs=HeapSorter([4,5,3,2])
+        hs.minHeapBuild()
+        self.assertEqual(hs.array, [2,3,4,5])
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
