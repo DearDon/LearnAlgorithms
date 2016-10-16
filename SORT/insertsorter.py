@@ -7,12 +7,12 @@
 # Author: Don E-mail: dpdeng@whu.edu.cn
 #########################################################################
 
-from sorter import Sorter
+import sorter
 
-import insertsorter_unittest
 import run_unittest
+import insertsorter_unittest
 
-class InsertSorter(Sorter):
+class InsertSorter(sorter.Sorter):
     def sort(self):
         for i in range(1,len(self.array)):
             key=self.array[i]
@@ -23,7 +23,7 @@ class InsertSorter(Sorter):
             self.array[j+1]=key
         return self.array
 
-if __name__ == "__main__":
+if __name__=='__main__':
     #unittest
     test_suite=insertsorter_unittest.fullSuite()
     test_result=run_unittest.runTestSuite(test_suite)

@@ -9,6 +9,7 @@
 import unittest
 import choosesorter_unittest
 import insertsorter_unittest
+import sorter_unittest
 import argparse as arg
 
 def getArgs():
@@ -22,10 +23,12 @@ def getTestSuite(mode):
     if mode=="full":
         test_suite.addTest(choosesorter_unittest.fullSuite())
         test_suite.addTest(insertsorter_unittest.fullSuite())
+        test_suite.addTest(sorter_unittest.fullSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     else:
         test_suite.addTest(choosesorter_unittest.partSuite())
         test_suite.addTest(insertsorter_unittest.partSuite())
+        test_suite.addTest(sorter_unittest.partSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     return test_suite
 

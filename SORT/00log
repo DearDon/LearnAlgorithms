@@ -24,3 +24,6 @@ log06(2016/10/11):
 
 log07(2016/10/12):
     Revise the file structure, then try to implement heapsorter, just start.
+
+log08(2016/10/16):
+    Add unit test framwork, find that import may lead some problem when parent class and children class are import together. so in parent class, can't import run_unittest.

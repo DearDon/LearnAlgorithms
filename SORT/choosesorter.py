@@ -7,12 +7,12 @@
 # Author: Don E-mail: dpdeng@whu.edu.cn
 #########################################################################
 
-from sorter import Sorter
+import sorter
 
-import choosesorter_unittest
 import run_unittest
+import choosesorter_unittest
 
-class ChooseSorter(Sorter):
+class ChooseSorter(sorter.Sorter):
     def sort(self):
         for i in range(0,len(self.array)-1):
             key=i
@@ -22,7 +22,7 @@ class ChooseSorter(Sorter):
             self.array[i],self.array[key]=self.array[key],self.array[i]
         return self.array
 
-if __name__ == "__main__":
+if __name__=='__main__':
     #unittest
     test_suite=choosesorter_unittest.fullSuite()
     test_result=run_unittest.runTestSuite(test_suite)

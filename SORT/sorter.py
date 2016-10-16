@@ -7,7 +7,9 @@
 # Author: Don E-mail: dpdeng@whu.edu.cn
 #########################################################################
 import timeit
-import unittest
+
+#can't import, as Sorter is parent class of other sub Sorter, it cause namespace problem
+#import run_unittest
 
 class Sorter(object):
     def __init__(self, array):
@@ -17,20 +19,8 @@ class Sorter(object):
         raise NotImplementedError
 
     def getSortTime(self):
-
         starttime = timeit.default_timer()
         self.sort()
         stoptime = timeit.default_timer()
-
         return stoptime-starttime
 
-class TestSorter(unittest.TestCase):
-    def test_init(self):
-        self.assertIsInstance(Sorter([1,2]), Sorter)
-
-    def test_sort(self):
-        with self.assertRaises(NotImplementedError):
-            Sorter([1,3]).sort()
-
-if __name__ == '__main__':
-    unittest.main()
