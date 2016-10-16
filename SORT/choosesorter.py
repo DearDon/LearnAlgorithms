@@ -8,7 +8,9 @@
 #########################################################################
 
 from sorter import Sorter
-import unittest
+
+import choosesorter_unittest
+import run_unittest
 
 class ChooseSorter(Sorter):
     def sort(self):
@@ -20,26 +22,8 @@ class ChooseSorter(Sorter):
             self.array[i],self.array[key]=self.array[key],self.array[i]
         return self.array
 
-class TestChooseSorter(unittest.TestCase):
-    def test_sortNorm(self):
-        self.assertEqual(ChooseSorter([1,6,5]).sort(), [1,5,6])
-
-    def test_sortOne(self):
-        self.assertEqual(ChooseSorter([1]).sort(), [1])
-
-    def test_sortFloat(self):
-        self.assertEqual(ChooseSorter([1.2, 2.0, 1.5]).sort(), [1.2, 1.5, 2.0])
-
-    def test_sortChar(self):
-        self.assertEqual(ChooseSorter(['c', 'b', 'a']).sort(), ['a', 'b', 'c'])
-
-    def test_longArray(self):
-        unsort_array=[i for i in range(999,0,-1)]
-        sorted_array=[i for i in range(1,1000)]
-        self.assertEqual(ChooseSorter(unsort_array).sort(), sorted_array)
-
-    def test_getSortTime(self):
-        self.assertIsInstance(ChooseSorter([1,6,5]).getSortTime(), float)
-
 if __name__ == "__main__":
-    unittest.main()
+    #unittest
+    test_suite=choosesorter_unittest.fullSuite()
+    test_result=run_unittest.runTestSuite(test_suite)
+    run_unittest.showResult(test_result)
