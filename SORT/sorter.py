@@ -8,9 +8,6 @@
 #########################################################################
 import timeit
 
-#can't import, as Sorter is parent class of other sub Sorter, it cause namespace problem
-#import run_unittest
-
 class Sorter(object):
     def __init__(self, array):
         self.array=array

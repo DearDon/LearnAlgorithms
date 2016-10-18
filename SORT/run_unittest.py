@@ -7,9 +7,10 @@
 # Author: Don 	E-mail: dpdeng@whu.edu.cn
 #########################################################################
 import unittest
-import choosesorter_unittest
-import insertsorter_unittest
-import sorter_unittest
+import unittest_choosesorter
+import unittest_insertsorter
+import unittest_sorter
+import unittest_heapsorter
 import argparse as arg
 
 def getArgs():
@@ -21,14 +22,16 @@ def getTestSuite(mode):
     test_suite=unittest.TestSuite()
 
     if mode=="full":
-        test_suite.addTest(choosesorter_unittest.fullSuite())
-        test_suite.addTest(insertsorter_unittest.fullSuite())
-        test_suite.addTest(sorter_unittest.fullSuite())
+        test_suite.addTest(unittest_choosesorter.fullSuite())
+        test_suite.addTest(unittest_insertsorter.fullSuite())
+        test_suite.addTest(unittest_heapsorter.fullSuite())
+        test_suite.addTest(unittest_sorter.fullSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     else:
-        test_suite.addTest(choosesorter_unittest.partSuite())
-        test_suite.addTest(insertsorter_unittest.partSuite())
-        test_suite.addTest(sorter_unittest.partSuite())
+        test_suite.addTest(unittest_choosesorter.partSuite())
+        test_suite.addTest(unittest_insertsorter.partSuite())
+        test_suite.addTest(unittest_heapsorter.partSuite())
+        test_suite.addTest(unittest_sorter.partSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     return test_suite
 

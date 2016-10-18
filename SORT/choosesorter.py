@@ -9,9 +9,6 @@
 
 import sorter
 
-import run_unittest
-import choosesorter_unittest
-
 class ChooseSorter(sorter.Sorter):
     def sort(self):
         for i in range(0,len(self.array)-1):
@@ -23,7 +20,4 @@ class ChooseSorter(sorter.Sorter):
         return self.array
 
 if __name__=='__main__':
-    #unittest
-    test_suite=choosesorter_unittest.fullSuite()
-    test_result=run_unittest.runTestSuite(test_suite)
-    run_unittest.showResult(test_result)
+    pass

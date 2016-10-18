@@ -9,8 +9,6 @@
 
 import sorter
 
-import run_unittest
-import insertsorter_unittest
 
 class InsertSorter(sorter.Sorter):
     def sort(self):
@@ -24,7 +22,4 @@ class InsertSorter(sorter.Sorter):
         return self.array
 
 if __name__=='__main__':
-    #unittest
-    test_suite=insertsorter_unittest.fullSuite()
-    test_result=run_unittest.runTestSuite(test_suite)
-    run_unittest.showResult(test_result)
+    pass
