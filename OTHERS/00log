@@ -1,0 +1,5 @@
+This directory is to keep algorithms met in chance.
+                    Don         2016/10/22
+
+log01(2016/10/22):
+    record a algorithms that calculate the max size rectangle from histogram: maxrectangle.py
