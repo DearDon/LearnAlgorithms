@@ -9,12 +9,15 @@
 from sorter import Sorter
 
 class HeapSorter(Sorter):
-    def __init__(self, array):
+    def __init__(self, array):#Done
         super(HeapSorter, self).__init__(array)
         self.heap_size=0
 
-    def sort(self):
-        pass #wait to implement
+    def sort(self):#need to reverse sort
+        self.minHeapBuild()
+        while self.heap_size>0:
+            self.heapExtractMin()
+        return self.array
 
     def minHeapBuild(self):#Done
         self.heap_size=1
@@ -24,8 +27,26 @@ class HeapSorter(Sorter):
     def heapMinimum(self):#Done
         return self.array[0]
 
-    def heapExtractMin(self):
-        pass
+    def heapExtractMin(self):#Done
+        if self.heap_size<=0:
+            raise Exception("no element in heap with size {}".format(str(i)))
+
+        self.heap_size-=1
+        if self.heap_size>0:
+            key=self.array[self.heap_size]
+            self.array[self.heap_size]=self.array[0]
+            self.heapIncreaseKey(0,key)
+        return self.array[0:self.heap_size]
+
+    def heapIncreaseKey(self, i, key):#Done
+        if self.heap_size <= i or i<0:
+            raise Exception(str(i)+" is beyond heap range")
+        elif self.array[i] > key:
+            raise Exception(str(key)+" is smaller than array[i] "+str(self.array[i]))
+        self.array[i]=key
+        while self.array[i]>self.array[self.minChildrenIndex(i)]:
+            self.array[i], self.array[self.minChildrenIndex(i)]=self.array[self.minChildrenIndex(i)], self.array[i]
+            i=self.minChildrenIndex(i)
 
     def heapDecreaseKey(self, i, key):#Done
         if self.heap_size <= i or i<0:
@@ -53,21 +74,24 @@ class HeapSorter(Sorter):
         else:
             return (i-1)/2
 
-    def childrenIndex(self,i):#Done
+    def minChildrenIndex(self,i):#Done
         if self.heap_size <= i or i<0:
             raise Exception("element with index "+str(i)+" are out of heap range")
 
         left_child=i*2+1
-        if left_child >= self.heap_size:
-            return i, i
-        elif left_child+1 >= self.heap_size:
-            return left_child, i
-        else:
-            right_child=left_child+1
-            return left_child, right_child
+        right_child=left_child+1
+
+        if left_child >= self.heap_size: #no child
+            return i
+        elif right_child >= self.heap_size: #only left child
+            return left_child
+        else: # got two children
+            if self.array[left_child] <= self.array[right_child]:
+                return left_child
+            else:
+                return right_child
 
 if __name__ == '__main__':
-    x,y=(1,2)
-    x,y=y,x
-    print x,y
-    print 1/2
+    x,y,z=(1,2,3)
+    x,y,z=z,y,x
+    print x,y,z
