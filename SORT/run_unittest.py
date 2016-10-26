@@ -12,6 +12,19 @@ import unittest_insertsorter
 import unittest_sorter
 import unittest_heapsorter
 import argparse as arg
+from choosesorter import ChooseSorter
+from insertsorter import InsertSorter
+from heapsorter import HeapSorter
+
+class UnitTest(unittest.TestCase):
+    def test_runtime(self):
+        n=1000
+        array=[i for i in range(n,0,-1)]
+        cst=ChooseSorter(array)
+        ist=InsertSorter(array)
+        hst=HeapSorter(array)
+        self.assertLessEqual(hst.getSortTime(),cst.getSortTime())
+        self.assertLessEqual(hst.getSortTime(),ist.getSortTime())
 
 def getArgs():
     parser = arg.ArgumentParser(description='run unittest for the project')
@@ -33,6 +46,7 @@ def getTestSuite(mode):
         test_suite.addTest(unittest_heapsorter.partSuite())
         test_suite.addTest(unittest_sorter.partSuite())
         #print "cases number: "+str(test_suite.countTestCases())
+    test_suite.addTest(UnitTest("test_runtime"))
     return test_suite
 
 def runTestSuite(test_suite):

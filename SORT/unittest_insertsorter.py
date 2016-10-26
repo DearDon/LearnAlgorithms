@@ -25,7 +25,7 @@ class UnitTest_InsertSorter(unittest.TestCase):
 
     def test_longArray(self):
         unsort_array=[i for i in range(999,0,-1)]
-        sorted_array=[i for i in range(1,1000)]
+        sorted_array=[i for i in range(1,1001)]
         self.assertEqual(insertsorter.InsertSorter(unsort_array).sort(), sorted_array)
 
     def test_getSortTime(self):
