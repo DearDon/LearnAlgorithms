@@ -11,20 +11,27 @@ import unittest_choosesorter
 import unittest_insertsorter
 import unittest_sorter
 import unittest_heapsorter
+import unittest_quicksorter
 import argparse as arg
 from choosesorter import ChooseSorter
 from insertsorter import InsertSorter
 from heapsorter import HeapSorter
+from quicksorter import QuickSorter
 
 class UnitTest(unittest.TestCase):
     def test_runtime(self):
-        n=1000
-        array=[i for i in range(n,0,-1)]
-        cst=ChooseSorter(array)
-        ist=InsertSorter(array)
-        hst=HeapSorter(array)
-        self.assertLessEqual(hst.getSortTime(),cst.getSortTime())
+        n=500
+        # array=[i for i in range(n,0,-1)]
+        # ist=InsertSorter(array)
+        # cst=ChooseSorter(array)
+        # hst=HeapSorter(array)
+        ist=InsertSorter([i for i in range(n,0,-1)])
+        cst=ChooseSorter([i for i in range(n,0,-1)])
+        hst=HeapSorter([i for i in range(n,0,-1)])
+        qst=QuickSorter([i for i in range(n,0,-1)])
         self.assertLessEqual(hst.getSortTime(),ist.getSortTime())
+        self.assertLessEqual(hst.getSortTime(),cst.getSortTime())
+        self.assertLessEqual(hst.getSortTime(),qst.getSortTime())
 
 def getArgs():
     parser = arg.ArgumentParser(description='run unittest for the project')
@@ -38,12 +45,14 @@ def getTestSuite(mode):
         test_suite.addTest(unittest_choosesorter.fullSuite())
         test_suite.addTest(unittest_insertsorter.fullSuite())
         test_suite.addTest(unittest_heapsorter.fullSuite())
+        test_suite.addTest(unittest_quicksorter.fullSuite())
         test_suite.addTest(unittest_sorter.fullSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     else:
         test_suite.addTest(unittest_choosesorter.partSuite())
         test_suite.addTest(unittest_insertsorter.partSuite())
         test_suite.addTest(unittest_heapsorter.partSuite())
+        test_suite.addTest(unittest_quicksorter.partSuite())
         test_suite.addTest(unittest_sorter.partSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     test_suite.addTest(UnitTest("test_runtime"))
