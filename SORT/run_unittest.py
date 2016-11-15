@@ -12,11 +12,13 @@ import unittest_insertsorter
 import unittest_sorter
 import unittest_heapsorter
 import unittest_quicksorter
+import unittest_randomquicksorter
 import argparse as arg
 from choosesorter import ChooseSorter
 from insertsorter import InsertSorter
 from heapsorter import HeapSorter
 from quicksorter import QuickSorter
+from randomquicksorter import RandomQuickSorter
 
 class UnitTest(unittest.TestCase):
     def test_runtime(self):
@@ -29,9 +31,12 @@ class UnitTest(unittest.TestCase):
         cst=ChooseSorter([i for i in range(n,0,-1)])
         hst=HeapSorter([i for i in range(n,0,-1)])
         qst=QuickSorter([i for i in range(n,0,-1)])
+        rqst=RandomQuickSorter([i for i in range(n,0,-1)])
         self.assertLessEqual(hst.getSortTime(),ist.getSortTime())
         self.assertLessEqual(hst.getSortTime(),cst.getSortTime())
         self.assertLessEqual(hst.getSortTime(),qst.getSortTime())
+        self.assertLessEqual(rqst.getSortTime(),qst.getSortTime())
+        self.assertLessEqual(rqst.getSortTime(),hst.getSortTime())
 
 def getArgs():
     parser = arg.ArgumentParser(description='run unittest for the project')
@@ -46,6 +51,7 @@ def getTestSuite(mode):
         test_suite.addTest(unittest_insertsorter.fullSuite())
         test_suite.addTest(unittest_heapsorter.fullSuite())
         test_suite.addTest(unittest_quicksorter.fullSuite())
+        test_suite.addTest(unittest_randomquicksorter.fullSuite())
         test_suite.addTest(unittest_sorter.fullSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     else:
@@ -53,6 +59,7 @@ def getTestSuite(mode):
         test_suite.addTest(unittest_insertsorter.partSuite())
         test_suite.addTest(unittest_heapsorter.partSuite())
         test_suite.addTest(unittest_quicksorter.partSuite())
+        test_suite.addTest(unittest_randomquicksorter.partSuite())
         test_suite.addTest(unittest_sorter.partSuite())
         #print "cases number: "+str(test_suite.countTestCases())
     test_suite.addTest(UnitTest("test_runtime"))
